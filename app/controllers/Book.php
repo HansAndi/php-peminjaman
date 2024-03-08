@@ -21,4 +21,16 @@ class Book extends Controller {
         $this->view('book/detail', $data);
         $this->view('layouts/footer');
     }
+
+    public function tambah() {
+        Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+        if( $this->model('Book_model')->tambahDataBook($_POST) > 0 ) {
+            header('Location: ' . BASE_URL . '/book');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASE_URL . '/book');
+            exit;
+        }
+    }
 }
