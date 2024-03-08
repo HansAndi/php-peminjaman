@@ -6,6 +6,7 @@ class Home extends Controller
         $data = [
             'title' => 'Home',
             'nama' => $this->model('User_model')->getUser(),
+            'tempat' => $this->model('User_model')->getTempat()
         ];
         $this->view('layouts/main', $data);
         $this->view('layouts/sidebar',);
