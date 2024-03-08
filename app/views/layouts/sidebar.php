@@ -37,6 +37,17 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
                     </a>
                 </li>
 
+                <li class="sidebar-item <?php if ($active == 'book') {
+                                            echo 'active';
+                                        } else {
+                                            echo '';
+                                        } ?>">
+                    <a href="<?= BASE_URL; ?>/book" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Book</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item <?php if ($active == 'peminjaman') {
                                             echo 'active';
                                         } else {
@@ -47,6 +58,8 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
                         <span>Peminjaman</span>
                     </a>
                 </li>
+
+                
 
                 <!-- <li class="sidebar-item">
                     <a href="#" class='sidebar-link'>
