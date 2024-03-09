@@ -93,7 +93,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form enctype="" action="<?= BASE_URL;?>/book/tambah" method="post">
+        <form enctype="multipart/form-data" action="<?= BASE_URL;?>/book/tambah" method="post">
                     <div class="form-group">
                         <label for="judul">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul">
