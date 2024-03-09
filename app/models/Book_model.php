@@ -96,4 +96,29 @@ class Book_model {
         return $unique;
     }
 
+    public function hapusDataBook($id) {
+        $query = "DELETE FROM book WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function updateBook($id, $data) {
+        $query = "UPDATE book SET judul = :judul, penulis = :penulis, penerbit = :penerbit, tahun = :tahun, summary = :summary WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('judul', $data['judul']);
+        $this->db->bind('penulis', $data['penulis']);
+        $this->db->bind('penerbit', $data['penerbit']);
+        $this->db->bind('tahun', $data['tahun']);
+        $this->db->bind('summary', $data['summary']);
+        $this->db->bind('id', $id);
+    
+        $this->db->execute();
+    
+        return $this->db->rowCount();
+    }
+
 }

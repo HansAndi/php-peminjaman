@@ -38,53 +38,6 @@
 </div>
 
 <!-- Modal -->
-<!-- <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="judulModal">Add Book</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form enctype="" action="<?= BASE_URL;?>/book/tambah" method="post">
-                    <div class="form-group">
-                        <label for="judul">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul">
-                    </div>
-                    <div class="form-group">
-                        <label for="penulis">Penulis</label>
-                        <input type="text" class="form-control" id="penulis" name="penulis">
-                    </div>
-                    <div class="form-group">
-                        <label for="penerbit">Penerbit</label>
-                        <input type="text" class="form-control" id="penerbit" name="penerbit">
-                    </div>
-                    <div class="form-group">
-                        <label for="tahun">Tahun</label>
-                        <input type="text" class="form-control" id="tahun" name="tahun">
-                    </div>
-                    <div class="form-group">
-                        <label for="summary">Summary</label>
-                        <textarea class="form-control" id="summary" name="summary"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="cover">Cover</label>
-                        <input type="file" class="form-control-file" id="cover" name="cover">
-                    </div>
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Add Book</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- Modal -->
 <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
