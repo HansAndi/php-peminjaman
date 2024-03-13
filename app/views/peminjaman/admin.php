@@ -14,11 +14,11 @@ include '../app/views/layouts/sidebar.php';
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>User</th>
                             <th>Buku</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
                             <th>Status</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,6 +26,7 @@ include '../app/views/layouts/sidebar.php';
                         <?php foreach ($data['peminjaman'] as $peminjaman) : ?>
                             <tr>
                                 <td><?= $no++; ?></td>
+                                <td><?= $peminjaman['username']; ?></td>
                                 <td><?= $peminjaman['judul']; ?></td>
                                 <td><?= date('d-m-Y', strtotime($peminjaman['tanggal_pinjam'])); ?></td>
                                 <td>
@@ -41,14 +42,6 @@ include '../app/views/layouts/sidebar.php';
                                     } else {
                                         echo 'Sudah Kembali';
                                     } ?>
-                                </td>
-                                <td>
-                                    <?php if ($peminjaman['status_peminjaman'] == 1) : ?>
-                                        <form action="<?= BASE_URL; ?>/peminjaman/kembali/<?= $peminjaman['id']; ?>" method="post">
-                                            <input type="hidden" name="id" value="<?= $peminjaman['id']; ?>">
-                                            <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Yakin ingin mengembalikan buku ini?')">Kembali</button>
-                                        </form>
-                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

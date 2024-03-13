@@ -59,6 +59,7 @@ class login extends Controller
 
     public function logout()
     {
+        unset($_SESSION['login']);
         session_destroy();
         header('Location: ' . BASE_URL . '/login');
     }

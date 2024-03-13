@@ -19,6 +19,8 @@
 <script src="<?= BASE_URL; ?>/assets/extensions/apexcharts/apexcharts.min.js"></script>
 <script src="<?= BASE_URL; ?>/assets/static/js/pages/dashboard.js"></script>
 
+<script src="<?= BASE_URL; ?>/js/script-edit.js"></script>
+
 </body>
 
 </html>

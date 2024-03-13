@@ -10,7 +10,6 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
 ?>
 
 <div id="sidebar">
-    <?= $active; ?>
     <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
@@ -47,7 +46,8 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item <?php if ($active == '') {
+
+                <li class="sidebar-item <?php if ($active == '' || $active == 'home') {
                                             echo 'active';
                                         } else {
                                             echo '';
@@ -55,6 +55,52 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
                     <a href="<?= BASE_URL; ?>/" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
+                    </a>
+                </li>
+                <?php if ($_SESSION['role'] == 'admin') { ?>
+
+                    <li class="sidebar-item <?php if ($active == 'penulis') {
+                                                echo 'active';
+                                            } else {
+                                                echo '';
+                                            } ?>">
+                        <a href="<?= BASE_URL; ?>/penulis" class='sidebar-link'>
+                            <i class="bi bi-grid-1x2-fill"></i>
+                            <span>Penulis</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item <?php if ($active == 'penerbit') {
+                                                echo 'active';
+                                            } else {
+                                                echo '';
+                                            } ?>">
+                        <a href="<?= BASE_URL; ?>/penerbit" class='sidebar-link'>
+                            <i class="bi bi-grid-1x2-fill"></i>
+                            <span>Penerbit</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item <?php if ($active == 'kategori') {
+                                                echo 'active';
+                                            } else {
+                                                echo '';
+                                            } ?>">
+                        <a href="<?= BASE_URL; ?>/kategori" class='sidebar-link'>
+                            <i class="bi bi-calculator"></i>
+                            <span>Kategori</span>
+                        </a>
+                    </li>
+
+                <?php } ?>
+                <li class="sidebar-item <?php if ($active == 'buku') {
+                                            echo 'active';
+                                        } else {
+                                            echo '';
+                                        } ?>">
+                    <a href="<?= BASE_URL; ?>/buku" class='sidebar-link'>
+                        <i class="bi bi-collection-fill"></i>
+                        <span>Buku</span>
                     </a>
                 </li>
 
@@ -69,26 +115,12 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
                     </a>
                 </li>
 
-                <!-- <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
-                        <span>Sub Kriteria</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item ">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-grid-1x2-fill"></i>
-                        <span>Alternatif</span>
-                    </a>
-                </li>
-
                 <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-calculator"></i>
-                        <span>Perhitungan</span>
+                    <a href="<?= BASE_URL; ?>/login/logout" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Logout</span>
                     </a>
-                </li> -->
+                </li>
             </ul>
         </div>
     </div>
