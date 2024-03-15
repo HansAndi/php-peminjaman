@@ -59,7 +59,18 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
                     </a>
                 </li>
 
-                
+                <li class="sidebar-item <?php if ($active == 'penerbit') {
+                                            echo 'active';
+                                        } else {
+                                            echo '';
+                                        } ?>">
+                    <a href="<?= BASE_URL; ?>/penerbit" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Penerbit</span>
+                    </a>
+                </li>
+
+
 
                 <!-- <li class="sidebar-item">
                     <a href="#" class='sidebar-link'>
