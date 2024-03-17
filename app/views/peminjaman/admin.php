@@ -1,6 +1,7 @@
 <?php
 include '../app/views/layouts/header.php';
 include '../app/views/layouts/sidebar.php';
+include '../app/views/functions/dateFormat.php';
 ?>
 
 <div class="row d-flex justify-content-center">
@@ -10,7 +11,7 @@ include '../app/views/layouts/sidebar.php';
                 <h3 class="card-title"></i>Data Peminjaman</h3>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-hover custom-table text-center">
+                <table class="table table-bordered table-hover custom-table text-center" id="table1">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -28,19 +29,19 @@ include '../app/views/layouts/sidebar.php';
                                 <td><?= $no++; ?></td>
                                 <td><?= $peminjaman['username']; ?></td>
                                 <td><?= $peminjaman['judul']; ?></td>
-                                <td><?= date('d-m-Y', strtotime($peminjaman['tanggal_pinjam'])); ?></td>
+                                <td><?= dateFormat($peminjaman['tanggal_pinjam']); ?></td>
                                 <td>
                                     <?php if ($peminjaman['tanggal_kembali'] == null) {
                                         echo '-';
                                     } else {
-                                        echo date('d-m-Y', strtotime($peminjaman['tanggal_kembali']));
+                                        echo dateFormat($peminjaman['tanggal_kembali']);
                                     } ?>
                                 </td>
                                 <td>
                                     <?php if ($peminjaman['status_peminjaman'] == 1) {
-                                        echo 'Belum Kembali';
+                                        echo '<span class="badge bg-danger">On Loan</span>';
                                     } else {
-                                        echo 'Sudah Kembali';
+                                        echo '<span class="badge bg-success">Returned</span>';
                                     } ?>
                                 </td>
                             </tr>
