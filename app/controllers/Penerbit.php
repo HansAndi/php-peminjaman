@@ -2,16 +2,23 @@
 
 class Penerbit extends Controller
 {
+    public function __construct()
+    {
+        if (!isset($_SESSION['login'])) {
+            header('Location: ' . BASE_URL . '/login');
+        }
+
+        if ($_SESSION['role'] != 'admin') {
+            header('Location: ' . BASE_URL . '/home');
+        }
+    }
+    
     public function index()
     {
         $data['title'] = 'Penerbit';
         $data['penerbit'] = $this->model('Penerbit_model')->getAllPenerbit();
 
-        $this->view('layouts/main', $data);
-        $this->view('layouts/sidebar');
-        $this->view('layouts/header', $data);
         $this->view('penerbit/index', $data);
-        $this->view('layouts/footer');
     }
 
     public function tambah()
@@ -34,11 +41,7 @@ class Penerbit extends Controller
         } else {
             // Jika bukan request POST, tampilkan form tambah
             $data['title'] = 'Tambah Penerbit';
-            $this->view('layouts/main', $data);
-            $this->view('layouts/sidebar');
-            $this->view('layouts/header', $data);
             $this->view('penerbit/tambah', $data); // Memperbaiki path view yang menunjuk ke tambah.php
-            $this->view('layouts/footer');
         }
     }
 
@@ -64,11 +67,7 @@ class Penerbit extends Controller
                 'title' => 'Edit Penerbit',
                 'penerbit' => $this->model('Penerbit_model')->getPenerbitById($id)
             ];
-            $this->view('layouts/main', $data);
-            $this->view('layouts/sidebar');
-            $this->view('layouts/header', $data);
             $this->view('penerbit/edit', $data);
-            $this->view('layouts/footer');
         }
     }
 

@@ -1,14 +1,17 @@
 <?php
 
-class Kategori_model {
+class Kategori_model
+{
     private $table = 'kategori';
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
-    public function getAllKategori() {
+    public function getAllKategori()
+    {
         $this->db->query('SELECT * FROM ' . $this->table);
         return $this->db->resultSet();
     }
@@ -16,7 +19,7 @@ class Kategori_model {
 
     public function tambahDataKategori($data)
     {
-        $query = "INSERT INTO kategori (nama_kategori) VALUES (:nama_kategori)"; 
+        $query = "INSERT INTO kategori (nama_kategori) VALUES (:nama_kategori)";
         $this->db->query($query);
         $this->db->bind('nama_kategori', $data['nama_kategori']);
         $this->db->execute();
@@ -30,16 +33,16 @@ class Kategori_model {
         return $this->db->resultSingle();
     }
 
-    public function updateDataKategori($id, $data)
+    public function updateDataKategori($data)
     {
         $query = "UPDATE " . $this->table . " SET nama_kategori = :nama_kategori WHERE id = :id"; // Added space after UPDATE
         $this->db->query($query);
-        $this->db->bind(':nama_kategori', $data['nama_kategori']); // Corrected binding placeholder
-        $this->db->bind(':id', $id); // Binding ID
+        $this->db->bind('nama_kategori', $data['nama_kategori']); // Corrected binding placeholder
+        $this->db->bind('id', $data['id']); // Binding ID
         $this->db->execute();
         return $this->db->rowCount();
     }
-    
+
 
     public function hapusDataKategori($id)
     {
@@ -50,5 +53,3 @@ class Kategori_model {
         return $this->db->rowCount();
     }
 }
-
-?>

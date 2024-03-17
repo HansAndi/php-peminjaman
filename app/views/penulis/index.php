@@ -1,31 +1,50 @@
-<div class="page-cotent mb-5">
-    <h2>Data Penulis</h2>
-    <a href="<?= BASE_URL; ?>/penulis/tambah" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#formModal">Tambah Penulis</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>Tanggal Lahir</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($data['penulis'] as $penulis) : ?>
-                <tr>
-                    <td><?= $penulis['id']; ?></td>
-                    <td><?= $penulis['nama_penulis']; ?></td>
-                    <td><?= $penulis['jenis_kelamin']; ?></td>
-                    <td><?= $penulis['tanggal_lahir']; ?></td>
-                    <td>
-                        <a href="<?= BASE_URL; ?>/penulis/edit/<?= $penulis['id']; ?>" class="btn btn-primary">Edit</a>
-                        <a href="<?= BASE_URL; ?>/penulis/delete/<?= $penulis['id']; ?>" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+<?php
+include '../app/views/layouts/header.php';
+include '../app/views/layouts/sidebar.php';
+?>
+
+<div class="page-content">
+    <section class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="card-title"></i>Data Penulis</h3>
+                    <?php if ($_SESSION['role'] == 'admin') : ?>
+                        <a href="<?= BASE_URL; ?>/penulis/tambah" class="btn btn-success mb-3 tambahPenulis" data-bs-toggle="modal" data-bs-target="#formModal">Tambah Penulis</a>
+                    <?php endif; ?>
+                </div>
+                <div class="card-body">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Tanggal Lahir</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach ($data['penulis'] as $penulis) : ?>
+                                <tr>
+                                    <td><?= $no; ?></td>
+                                    <td><?= $penulis['nama_penulis']; ?></td>
+                                    <td><?= $penulis['jenis_kelamin']; ?></td>
+                                    <td><?= $penulis['tanggal_lahir']; ?></td>
+                                    <td>
+                                        <a href="<?= BASE_URL; ?>/penulis/edit/<?= $penulis['id']; ?>" class="btn btn-warning editPenulis"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="<?= BASE_URL; ?>/penulis/delete/<?= $penulis['id']; ?>" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+                                    </td>
+                                </tr>
+                                <?php $no++; ?>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <!-- Modal -->
@@ -38,6 +57,7 @@
             </div>
             <div class="modal-body">
                 <form enctype="multipart/form-data" action="<?= BASE_URL; ?>/penulis/tambah" method="post">
+                    <input type="hidden" id="id" name="id">
                     <div class="form-group">
                         <label for="nama_penulis">Nama Penulis</label>
                         <input type="text" class="form-control" id="nama_penulis" name="nama_penulis">
@@ -79,3 +99,7 @@
         height: 300px;
     }
 </style>
+
+<?php
+include '../app/views/layouts/footer.php';
+?>

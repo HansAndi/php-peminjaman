@@ -2,16 +2,23 @@
 
 class Kategori extends Controller
 {
+    public function __construct()
+    {
+        if (!isset($_SESSION['login'])) {
+            header('Location: ' . BASE_URL . '/login');
+        }
+
+        if ($_SESSION['role'] != 'admin') {
+            header('Location: ' . BASE_URL . '/home');
+        }
+    }
+
     public function index()
     {
         $data['title'] = 'Kategori';
         $data['kategori'] = $this->model('Kategori_model')->getAllKategori();
 
-        $this->view('layouts/main', $data);
-        $this->view('layouts/sidebar');
-        $this->view('layouts/header', $data);
         $this->view('kategori/index', $data);
-        $this->view('layouts/footer');
     }
 
     public function tambah()
@@ -32,35 +39,26 @@ class Kategori extends Controller
         } else {
             // Jika bukan request POST, tampilkan form tambah
             $data['title'] = 'Tambah Kategori';
-            $this->view('layouts/main', $data);
-            $this->view('layouts/sidebar');
-            $this->view('layouts/header', $data);
             $this->view('kategori/tambah', $data); // Memperbaiki path view yang menunjuk ke tambah.php
-            $this->view('layouts/footer');
         }
     }
 
-    public function edit($id)
+    public function getEdit()
+    {
+        echo json_encode($this->model('Kategori_model')->getKategoriById($_POST['id']));
+    }
+
+    public function edit()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Proses edit data kategori
-            if ($this->model('Kategori_model')->updateDataKategori($id, $_POST) > 0) {
+            if ($this->model('Kategori_model')->updateDataKategori($_POST) > 0) {
                 Flasher::setFlash('berhasil', 'diubah', 'success');
             } else {
                 Flasher::setFlash('gagal', 'diubah', 'danger');
             }
             header('Location: ' . BASE_URL . '/kategori');
             exit;
-        } else {
-            $data = [
-                'title' => 'Edit Kategori',
-                'kategori' => $this->model('Kategori_model')->getKategoriById($id)
-            ];
-            $this->view('layouts/main', $data);
-            $this->view('layouts/sidebar');
-            $this->view('layouts/header', $data);
-            $this->view('kategori/edit', $data);
-            $this->view('layouts/footer');
         }
     }
 
@@ -76,5 +74,3 @@ class Kategori extends Controller
         exit;
     }
 }
-
-?>
