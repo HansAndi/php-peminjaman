@@ -1,6 +1,7 @@
 <?php
 
-class Buku_model {
+class Buku_model
+{
     private $table = 'buku';
     private $db;
 
@@ -11,26 +12,35 @@ class Buku_model {
 
     public function getAllBuku()
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
+        $this->db->query('SELECT 
+        buku.id, judul, nama_penulis, nama_penerbit, nama_kategori, tahun, summary, cover, penulis_id, penerbit_id, kategori_id
+        FROM buku
+        JOIN penulis ON buku.penulis_id = penulis.id
+        JOIN penerbit ON buku.penerbit_id = penerbit.id
+        JOIN kategori ON buku.kategori_id = kategori.id
+        ORDER BY buku.id DESC');
         return $this->db->resultAll();
     }
 
-    public function getBukuById($id) {
+    public function getBukuById($id)
+    {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
         $this->db->bind('id', $id);
         return $this->db->resultSingle();
     }
 
-    public function tambahDataBuku($data) {
+    public function tambahDataBuku($data)
+    {
         if ($_FILES['cover']['error'] !== 4) {
             $cover = $this->upload();
-        } 
+        }
 
-        $query = "INSERT INTO buku (judul, penulis, penerbit, tahun , cover, summary) VALUES (:judul, :penulis, :penerbit, :tahun, :cover, :summary)";
+        $query = "INSERT INTO buku (judul, penulis_id_id, penerbit_id_id, kategori_id, tahun , summary, cover) VALUES (:judul, :penulis_id_id, :penerbit_id_id, :kategori_id, :tahun, :summary, :cover)";
         $this->db->query($query);
         $this->db->bind('judul', $data['judul']);
-        $this->db->bind('penulis', $data['penulis']);
-        $this->db->bind('penerbit', $data['penerbit']);
+        $this->db->bind('penulis_id_id', $data['penulis_id_id']);
+        $this->db->bind('penerbit_id_id', $data['penerbit_id_id']);
+        $this->db->bind('kategori_id', $data['kategori_id']);
         $this->db->bind('tahun', $data['tahun']);
         $this->db->bind('summary', $data['summary']);
         $this->db->bind('cover', $cover);
@@ -85,7 +95,8 @@ class Buku_model {
         return $unique;
     }
 
-    public function hapusDataBuku($id) {
+    public function hapusDataBuku($id)
+    {
         $query = "DELETE FROM buku WHERE id = :id";
         $this->db->query($query);
         $this->db->bind('id', $id);
@@ -95,26 +106,28 @@ class Buku_model {
         return $this->db->rowCount();
     }
 
-    public function updateBuku($id, $data) {
+    public function updateBuku($id, $data)
+    {
         if ($_FILES['cover']['error'] !== 4) {
             $cover = $this->upload();
         } else {
-            $cover = $this->getBukuById($data['id']);
+            $cover = $this->getBukuById($id);
             $cover = $cover['cover'];
         }
-        
-        $query = "UPDATE buku SET judul = :judul, penulis = :penulis, penerbit = :penerbit, tahun = :tahun, summary = :summary WHERE id = :id";
+
+        $query = "UPDATE buku SET judul = :judul, penulis_id = :penulis_id, penerbit_id = :penerbit_id, kategori_id = :kategori_id, tahun = :tahun, summary = :summary, cover = :cover WHERE id = :id";
         $this->db->query($query);
         $this->db->bind('judul', $data['judul']);
-        $this->db->bind('penulis', $data['penulis']);
-        $this->db->bind('penerbit', $data['penerbit']);
+        $this->db->bind('penulis_id', $data['penulis_id']);
+        $this->db->bind('penerbit_id', $data['penerbit_id']);
+        $this->db->bind('kategori_id', $data['kategori_id']);
         $this->db->bind('tahun', $data['tahun']);
         $this->db->bind('summary', $data['summary']);
+        $this->db->bind('cover', $cover);
         $this->db->bind('id', $id);
-    
+
         $this->db->execute();
-    
+
         return $this->db->rowCount();
     }
-
 }

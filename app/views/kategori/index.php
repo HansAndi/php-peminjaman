@@ -10,7 +10,7 @@ include '../app/views/layouts/sidebar.php';
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title"></i>Data Kategori</h3>
                     <?php if ($_SESSION['role'] == 'admin') : ?>
-                        <a href="<?= BASE_URL; ?>/kategori/tambah" class="btn btn-success mb-3 tambahKategori" data-bs-toggle="modal" data-bs-target="#formModal">Tambah kategori</a>
+                        <a href="<?= BASE_URL; ?>/kategori/tambah" class="btn btn-success mb-3 tambahKategori" data-bs-toggle="modal" data-bs-target="#formModal">Tambah Kategori</a>
                     <?php endif; ?>
                 </div>
                 <div class="card-body">

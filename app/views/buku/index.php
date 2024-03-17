@@ -23,17 +23,25 @@ include '../app/views/layouts/sidebar.php';
                 <?php foreach ($data['buku'] as $buku) : ?>
                     <div class="col-md-4 mt-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="<?= BASE_URL; ?>/img/<?= $buku['cover']; ?>" class="card-img-top" alt="<?= $buku['judul']; ?>">
+                            <img src="<?= BASE_URL; ?>/img/buku/<?= $buku['cover']; ?>" class="card-img-top" alt="<?= $buku['judul']; ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $buku['judul']; ?></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><?= $buku['penulis']; ?></h6>
-                                <p class="card-text"><?= $buku['penerbit']; ?></p>
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $buku['nama_penulis']; ?></h6>
+                                <p class="card-text"><?= $buku['nama_penerbit']; ?></p>
                                 <p class="card-text"><?= $buku['tahun']; ?></p>
-                                <a class="btn btn-primary btn-lg mb-2" href="<?= BASE_URL; ?>/buku/detail/<?= $buku['id']; ?>" role="button">Detail</a><br>
-                                <?php if ($_SESSION['role'] == 'admin') : ?>
-                                    <a class="btn btn-warning btn-lg mb-2 editBuku" href="<?= BASE_URL; ?>/buku/edit/<?= $buku['id']; ?>" role="button"><i class="bi bi-pencil-square"></i></a><br>
-                                    <a class="btn btn-danger btn-lg" href="<?= BASE_URL; ?>/buku/delete/<?= $buku['id']; ?>" role="button" onclick="return confirm('YAKIN?');"><i class="bi bi-trash-fill"></i></a>
-                                <?php endif; ?>
+                                <form action="<?= BASE_URL; ?>/peminjaman/pinjam" method="post" class="">
+                                    <div class="d-flex justify-content-around">
+                                        <?php if ($_SESSION['role'] == 'user') : ?>
+                                            <input type="hidden" name="buku_id" value="<?= $buku['id']; ?>">
+                                            <button type class="btn btn-sm btn-primary">Pinjam</button>
+                                        <?php endif ?>
+                                        <a class="btn btn-primary btn-lg" href="<?= BASE_URL; ?>/buku/detail/<?= $buku['id']; ?>" role="button"><i class="bi bi-book"></i></a>
+                                        <?php if ($_SESSION['role'] == 'admin') : ?>
+                                            <a class="btn btn-warning btn-lg editBuku" href="<?= BASE_URL; ?>/buku/edit/<?= $buku['id']; ?>" role="button"><i class="bi bi-pencil-square"></i></a>
+                                            <a class="btn btn-danger btn-lg" href="<?= BASE_URL; ?>/buku/delete/<?= $buku['id']; ?>" role="button" onclick="return confirm('YAKIN?');"><i class="bi bi-trash-fill"></i></a>
+                                        <?php endif; ?>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -60,22 +68,47 @@ include '../app/views/layouts/sidebar.php';
                         <label for="judul">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul">
                     </div>
+
                     <div class="form-group">
-                        <label for="penulis">Penulis</label>
-                        <input type="text" class="form-control" id="penulis" name="penulis">
+                        <label for="penulis_id">Penulis</label>
+                        <select class="form-select" id="penulis_id" name="penulis_id">
+                            <option disabled selected>Pilih Penulis</option>
+                            <?php foreach ($data['penulis'] as $penulis) : ?>
+                                <option value="<?= $penulis['id']; ?>"><?= $penulis['nama_penulis']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
+
                     <div class="form-group">
-                        <label for="penerbit">Penerbit</label>
-                        <input type="text" class="form-control" id="penerbit" name="penerbit">
+                        <label for="penerbit_id">Penerbit</label>
+                        <select class="form-select" id="penerbit_id" name="penerbit_id">
+                            <option disabled selected>Pilih Penerbit</option>
+                            <?php foreach ($data['penerbit'] as $penerbit) : ?>
+                                <option value="<?= $penerbit['id']; ?>"><?= $penerbit['nama_penerbit']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="kategori_id">Kategori</label>
+                        <select class="form-select" id="kategori_id" name="kategori_id">
+                            <option disabled selected>Pilih Kategori</option>
+                            <?php foreach ($data['kategori'] as $kategori) : ?>
+                                <option value="<?= $kategori['id']; ?>"><?= $kategori['nama_kategori']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="tahun">Tahun</label>
                         <input type="number" class="form-control" id="tahun" name="tahun">
                     </div>
+
                     <div class="form-group">
                         <label for="summary">Summary</label>
                         <textarea class="form-control" id="summary" name="summary"></textarea>
                     </div>
+
                     <div class="form-group">
                         <label for="cover">Cover</label>
                         <input type="file" class="form-control-file" id="cover" name="cover">

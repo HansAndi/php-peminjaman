@@ -11,8 +11,13 @@ class Buku extends Controller
 
     public function index()
     {
-        $data = ['title' => 'Buku'];
-        $data['buku'] = $this->model('Buku_model')->getAllBuku();
+        $data = [
+            'title' => 'Buku',
+            'buku' => $this->model('Buku_model')->getAllBuku(),
+            'penulis' => $this->model('Penulis_model')->getAllPenulis(),
+            'penerbit' => $this->model('Penerbit_model')->getAllPenerbit(),
+            'kategori' => $this->model('Kategori_model')->getAllKategori()
+        ];
         $this->view('buku/index', $data);
     }
 
@@ -65,8 +70,13 @@ class Buku extends Controller
                 exit;
             }
         } else {
-            $data['title'] = 'Edit Buku';
-            $data['buku'] = $this->model('Buku_model')->getBukuById($id);
+            $data = [
+                'title' => 'Edit Buku',
+                'buku' => $this->model('Buku_model')->getBukuById($id),
+                'penulis' => $this->model('Penulis_model')->getAllPenulis(),
+                'penerbit' => $this->model('Penerbit_model')->getAllPenerbit(),
+                'kategori' => $this->model('Kategori_model')->getAllKategori()
+            ];
             $this->view('buku/edit', $data);
         }
     }

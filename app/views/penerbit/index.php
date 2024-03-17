@@ -63,6 +63,16 @@ include '../app/views/layouts/sidebar.php';
                         <input type="text" class="form-control" id="nama_penerbit" name="nama_penerbit">
                     </div>
 
+                    <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <input type="text" class="form-control" id="alamat" name="alamat">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="no_hp">No HP</label>
+                        <input type="number" class="form-control" id="no_hp" name="no_hp">
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Tambah Penerbit</button>
