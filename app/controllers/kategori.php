@@ -19,7 +19,7 @@ class Kategori extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Proses tambah data kategori
             $data = [
-                'genre' => $_POST['genre'],
+                'nama_kategori' => $_POST['nama_kategori'],
             ];
             $result = $this->model('Kategori_model')->tambahDataKategori($data);
             if ($result > 0) {

@@ -5,23 +5,34 @@
                 <h5 class="card-title">EDIT PENULIS</h5>
             </div>
         </div>
-        
-            <div class="card-body">
-                Nama Penulis: 
-                <input type="text" name="nama_penulis" class="form-control" value="<?= $data['penulis']['nama_penulis']; ?>" /><br>
-                Jenis Kelamin:
-                <input type="text" name="jenis_kelamin" class="form-control" value="<?= $data['penulis']['jenis_kelamin']; ?>" /><br>
-                Tahun Lahir:
-                <input type="text" name="tahun_lahir" class="form-control" value="<?= $data['penulis']['tahun_lahir']; ?>" /><br>
-                Email:
-                <input type="text" name="email" class="form-control" value="<?= $data['penulis']['email']; ?>" /><br>
-                Judul Buku:
-                <textarea name="judul_buku" class="form-control"><?= $data['penulis']['judul_buku']; ?></textarea>
-            </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-success">Edit Penulis</button>
-                <a class="btn btn-primary" href="<?= BASE_URL; ?>/book" role="button">Kembali</a>
-            </div>
-        </form>
+
+        <div class="card-body">
+            <form action="<?= BASE_URL; ?>/penulis/edit/<?= $data['penulis']['id']; ?>" method="post">
+                <div class="form-group">
+                    <label for="nama_penulis">Nama Penulis</label>
+                    <input type="text" class="form-control" id="nama_penulis" name="nama_penulis" value="<?= $data['penulis']['nama_penulis'] ?>">
+                </div>
+                <div class="form-group">
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <select class="form-select" id="jenis_kelamin" name="jenis_kelamin">
+                        <?php if ($data['penulis']['jenis_kelamin'] == 'L') : ?>
+                            <option value="L" selected>Laki-laki</option>
+                            <option value="P">Perempuan</option>
+                        <?php else : ?>
+                            <option value="L">Laki-laki</option>
+                            <option value="P" selected>Perempuan</option>
+                        <?php endif; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tanggal_lahir">Tahun Lahir</label>
+                    <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="<?= $data['penulis']['tanggal_lahir'] ?>">
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success">Edit Penulis</button>
+                    <a class="btn btn-primary" href="<?= BASE_URL; ?>/penulis" role="button">Kembali</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

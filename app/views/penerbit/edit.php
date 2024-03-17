@@ -3,8 +3,8 @@
     <h2>Edit Data Penerbit</h2>
     <form action="<?= BASE_URL; ?>/penerbit/edit/<?= $data['penerbit']['id']; ?>" method="post">
         <div class="form-group">
-            <label for="nama">Nama Penerbit:</label>
-            <input type="text" class="form-control" id="nama" name="nama" value="<?= $data['penerbit']['nama']; ?>"
+            <label for="nama_penerbit">Nama Penerbit:</label>
+            <input type="text" class="form-control" id="nama_penerbit" name="nama_penerbit" value="<?= $data['penerbit']['nama_penerbit']; ?>"
                 required>
         </div>
         <div class="form-group">

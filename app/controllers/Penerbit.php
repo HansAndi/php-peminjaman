@@ -19,7 +19,7 @@ class Penerbit extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Proses tambah data penerbit
             $data = [
-                'nama' => $_POST['nama'],
+                'nama_penerbit' => $_POST['nama_penerbit'],
                 'alamat' => $_POST['alamat'],
                 'no_hp' => $_POST['no_hp']
             ];
@@ -48,7 +48,7 @@ class Penerbit extends Controller
             // Proses edit data penerbit
             $data = [
                 'id' => $id,
-                'nama' => $_POST['nama'],
+                'nama_penerbit' => $_POST['nama_penerbit'],
                 'alamat' => $_POST['alamat'],
                 'no_hp' => $_POST['no_hp']
             ];

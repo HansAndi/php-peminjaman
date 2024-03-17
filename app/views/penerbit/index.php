@@ -15,7 +15,7 @@
             <?php foreach ($data['penerbit'] as $penerbit) : ?>
             <tr>
                 <td><?= $penerbit['id']; ?></td>
-                <td><?= $penerbit['nama']; ?></td>
+                <td><?= $penerbit['nama_penerbit']; ?></td>
                 <td><?= $penerbit['alamat']; ?></td>
                 <td><?= $penerbit['no_hp']; ?></td>
                 <td>

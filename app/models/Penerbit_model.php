@@ -16,9 +16,9 @@ class Penerbit_model {
 
     public function tambahDataPenerbit($data)
     {
-        $query = "INSERT INTO " . $this->table . " (nama, alamat, no_hp) VALUES (:nama, :alamat, :no_hp)";
+        $query = "INSERT INTO " . $this->table . " (nama_penerbit, alamat, no_hp) VALUES (:nama_penerbit, :alamat, :no_hp)";
         $this->db->query($query);
-        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('nama_penerbit', $data['nama_penerbit']);
         $this->db->bind('alamat', $data['alamat']);
         $this->db->bind('no_hp', $data['no_hp']);
         $this->db->execute();
@@ -34,10 +34,10 @@ class Penerbit_model {
 
     public function updateDataPenerbit($id, $data)
     {
-        $query = "UPDATE " . $this->table . " SET nama=:nama, alamat=:alamat, no_hp=:no_hp WHERE id=:id";
+        $query = "UPDATE " . $this->table . " SET nama_penerbit=:nama_penerbit, alamat=:alamat, no_hp=:no_hp WHERE id=:id";
         $this->db->query($query);
         $this->db->bind('id', $id);
-        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('nama_penerbit', $data['nama_penerbit']);
         $this->db->bind('alamat', $data['alamat']);
         $this->db->bind('no_hp', $data['no_hp']);
         $this->db->execute();
