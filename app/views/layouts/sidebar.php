@@ -80,6 +80,16 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
                         <span>Penerbit</span>
                     </a>
                 </li>
+                <li class="sidebar-item <?php if ($active == 'kategori') {
+                                            echo 'active';
+                                        } else {
+                                            echo '';
+                                        } ?>">
+                    <a href="<?= BASE_URL; ?>/kategori" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Kategori</span>
+                    </a>
+                </li>
 
 
 
