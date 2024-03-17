@@ -31,7 +31,12 @@ $active = basename($_SERVER['REQUEST_URI']);
             overflow-y: scroll !important;
             padding-right: 0 !important;
         }
-    </style>
+
+        .modal-open {
+            padding-right: 0 !important;
+        }
+
+</style>
 </head>
 
 <body>

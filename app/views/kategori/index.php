@@ -31,9 +31,9 @@ include '../app/views/layouts/sidebar.php';
                                 <td><?= $kategori['nama_kategori']; ?></td>
                                 <td>
                                     <a href="<?= BASE_URL; ?>/kategori/edit/<?= $kategori['id']; ?>" class="btn btn-sm btn-warning editKategori" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $kategori['id']; ?>">
-                                        Edit
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="<?= BASE_URL; ?>/kategori/hapus/<?= $kategori['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a>
+                                    <a href="<?= BASE_URL; ?>/kategori/hapus/<?= $kategori['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="bi bi-trash-fill"></i></a>
                                 </td>
                             </tr>
                         <?php

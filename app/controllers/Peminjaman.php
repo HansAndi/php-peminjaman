@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('Asia/Jakarta');
+
 class Peminjaman extends Controller
 {
     public function __construct()
@@ -10,15 +12,6 @@ class Peminjaman extends Controller
 
     public function index()
     {
-        // $user_id = $_SESSION['id'];
-
-        // $data = [
-        //     'title' => 'Peminjaman',
-        //     'peminjaman' => $this->model('Peminjaman_model')->getPeminjamanByUserId($user_id),
-        // ];
-
-        // $this->view('peminjaman/index', $data);
-
         if ($_SESSION['role'] == 'admin') {
             $data = [
                 'title' => 'Peminjaman',
@@ -46,7 +39,7 @@ class Peminjaman extends Controller
         $data = [
             'user_id' => $user_id,
             'buku_id' => $buku_id,
-            'tanggal_pinjam' => date('Y-m-d'),
+            'tanggal_pinjam' => date('Y-m-d H:i:s'),
         ];
 
         if ($this->model('Peminjaman_model')->tambahPeminjaman($data) > 0) {
@@ -64,7 +57,7 @@ class Peminjaman extends Controller
     {
         $data = [
             'id' => $_POST['id'],
-            'tanggal_kembali' => date('Y-m-d'),
+            'tanggal_kembali' => date('Y-m-d H:i:s'),
             'status' => false,
         ];
 

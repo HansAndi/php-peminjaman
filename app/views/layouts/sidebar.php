@@ -65,7 +65,7 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
                                                 echo '';
                                             } ?>">
                         <a href="<?= BASE_URL; ?>/penulis" class='sidebar-link'>
-                            <i class="bi bi-grid-1x2-fill"></i>
+                            <i class="fa-solid fa-feather"></i>
                             <span>Penulis</span>
                         </a>
                     </li>
@@ -99,7 +99,7 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
                                             echo '';
                                         } ?>">
                     <a href="<?= BASE_URL; ?>/buku" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
+                        <i class="fa-solid fa-book"></i>
                         <span>Buku</span>
                     </a>
                 </li>
@@ -117,7 +117,7 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
 
                 <li class="sidebar-item">
                     <a href="<?= BASE_URL; ?>/login/logout" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
+                        <i class="fa-solid fa-right-from-bracket"></i>
                         <span>Logout</span>
                     </a>
                 </li>

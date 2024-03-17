@@ -32,54 +32,6 @@ $(function () {
 
   const url = "/php-peminjaman/public/";
 
-  // const inputPenulis = ["nama_penulis", "id"];
-
-  // $(".tambahPenulis").on("click", function () {
-  //   initializeModalTambah({
-  //     modalTitle: "Tambah Penulis",
-  //     submitButtonText: "Tambah Data",
-  //     formAction: url + "penulis/tambah",
-  //     inputIds: inputPenulis,
-  //   });
-  // });
-
-  // $(".editPenulis").on("click", function () {
-  //   initializeModalEdit({
-  //     modalTitle: "Edit Penulis",
-  //     submitButtonText: "Edit Data",
-  //     formAction: url + "penulis/edit",
-  //     // inputIds: inputPenulis.slice(0, inputPenulis.length - 1),
-  //   });
-
-  //   const id = $(this).data("id");
-
-  //   populateEditModal(id, url + "penulis/getEdit", inputPenulis);
-  // });
-
-  // const inputPenerbit = ["nama_penerbit", "id"];
-
-  // $(".tambahPenerbit").on("click", function () {
-  //   initializeModalTambah({
-  //     modalTitle: "Tambah Penerbit",
-  //     submitButtonText: "Tambah Data",
-  //     formAction: url + "penerbit/tambah",
-  //     inputIds: inputPenerbit,
-  //   });
-  // });
-
-  // $(".editPenerbit").on("click", function () {
-  //   initializeModalEdit({
-  //     modalTitle: "Edit Penerbit",
-  //     submitButtonText: "Edit Data",
-  //     formAction: url + "penerbit/edit",
-  //     // inputIds: ["nama_penerbit", "id"],
-  //   });
-
-  //   const id = $(this).data("id");
-
-  //   populateEditModal(id, url + "penerbit/getEdit", inputPenerbit);
-  // });
-
   switch (window.location.pathname) {
     case url + "penulis":
       const inputPenulis = ["nama_penulis", "id"];

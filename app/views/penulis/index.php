@@ -31,10 +31,10 @@ include '../app/views/layouts/sidebar.php';
                                 <td><?= $penulis['nama_penulis']; ?></td>
                                 <td>
                                     <a href="<?= BASE_URL; ?>/penulis/edit/<?= $penulis['id']; ?>" class="btn btn-sm btn-warning editPenulis" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $penulis['id']; ?>">
-                                        Edit
+                                    <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a href="<?= BASE_URL; ?>/penulis/hapus/<?= $penulis['id']; ?>" class="btn btn-sm
-                                    btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a>
+                                    btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="bi bi-trash-fill"></i></a>
                                 </td>
                             </tr>
                         <?php

@@ -40,19 +40,19 @@ include '../app/views/layouts/sidebar.php';
                                     <img src="<?= BASE_URL; ?>/img/buku/<?= $buku['cover']; ?>" style="max-width: 50px;">
                                 </td>
                                 <td>
-                                    <?php if ($_SESSION['role'] == 'user') : ?>
-                                        <form action="<?= BASE_URL; ?>/peminjaman/pinjam" method="post" class="">
+                                    <form action="<?= BASE_URL; ?>/peminjaman/pinjam" method="post" class="">
+                                        <?php if ($_SESSION['role'] == 'user') : ?>
                                             <input type="hidden" name="buku_id" value="<?= $buku['id']; ?>">
                                             <button type class="btn btn-sm btn-primary">Pinjam</button>
-                                        </form>
-                                    <?php endif ?>
-                                    <a href="<?= BASE_URL; ?>/buku/detail/<?= $buku['id']; ?>" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</a>
-                                    <?php if ($_SESSION['role'] == 'admin') : ?>
-                                        <a href="<?= BASE_URL; ?>/buku/edit/<?= $buku['id']; ?>" class="btn btn-sm btn-warning editBuku" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $buku['id']; ?>">
-                                            Edit
-                                        </a>
-                                        <a href="<?= BASE_URL; ?>/buku/hapus/<?= $buku['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
-                                    <?php endif; ?>
+                                        <?php endif ?>
+                                        <a href="<?= BASE_URL; ?>/buku/detail/<?= $buku['id']; ?>" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</a>
+                                        <?php if ($_SESSION['role'] == 'admin') : ?>
+                                            <a href="<?= BASE_URL; ?>/buku/edit/<?= $buku['id']; ?>" class="btn btn-sm btn-warning editBuku" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $buku['id']; ?>">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a href="<?= BASE_URL; ?>/buku/hapus/<?= $buku['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="bi bi-trash-fill"></i></a>
+                                        <?php endif; ?>
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
