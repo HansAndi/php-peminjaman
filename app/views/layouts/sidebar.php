@@ -37,6 +37,17 @@ if ($url !== false && isset($urlParts[$urlIndex + 1])) {
                     </a>
                 </li>
 
+                <li class="sidebar-item <?php if ($active == 'penulis') {
+                                            echo 'active';
+                                        } else {
+                                            echo '';
+                                        } ?>">
+                    <a href="<?= BASE_URL; ?>/penulis" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Penulis</span>
+                    </a>
+                </li>                        
+
                 <li class="sidebar-item <?php if ($active == 'book') {
                                             echo 'active';
                                         } else {
